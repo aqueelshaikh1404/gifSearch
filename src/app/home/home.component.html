@@ -1,0 +1,59 @@
+<section>
+
+  <div class="container topSection">
+    <div class="row justify-content-center">
+      <span class="kolor_white fs_50 text-justify">Gif Search</span>
+    </div>
+    <div class="row justify-content-center mt">
+      <!-- <input type="text" [(ngModel)]="search"> -->
+      <input id="txtkey" [(ngModel)]="search" type="text" class="form-control" placeholder="What are you looking for?"
+        aria-describedby="ddlsearch">
+
+      <div class="ddl-select input-group-btn ">
+        <select id="ddlsearch" class="selectpicker form-control dropdown" data-style="btn-primary">
+          <option value="showAll">Show All</option>
+          <!-- <option value="austria">Austraia</option>
+          <option value="usa">usa</option> -->
+        </select>
+      </div>
+
+      <div class="input-group-btn seacrhicon">
+        <button id="btn-search" (click)="searchGifs()" class="btn btn-info searchBtn" type="button">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+      <!-- <span (click)="searchGifs()">Icon</span> -->
+    </div>
+    <div class="row justify-content-center mt">
+      <span class="kolor_orange fs_30 text-justify">
+        You can search any gif with our search.
+      </span>
+    </div>
+    <div class="row justify-content-center mt">
+      <span class="kolor_orange fs_20 text-justify">
+        Everything you need for your creative projects, websites, banners, presentations, magazines and advertising.
+      </span>
+    </div>
+  </div>
+
+</section>
+
+<section *ngIf="gifsList">
+  <div class="container text-center bgColorWhite">
+    <div class="padding">
+      <span *ngFor="let gifs of gifsList">
+        <img src="{{gifs.images.downsized.url}}" alt="{{gifs.username}}" width="310" height="250">
+      </span>
+      <span [hidden]="showMsg"> No Gifs Available</span>
+      <div class="spinner-border" [hidden]="showLoader" style="width: 3rem; height: 3rem;" role="status">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <app-footer></app-footer>
+  </div>
+
+</footer>
